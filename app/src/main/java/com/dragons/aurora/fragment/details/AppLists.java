@@ -6,10 +6,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.dragons.aurora.fragment.DetailsFragment;
+import com.percolate.caffeine.ToastUtils;
 import com.percolate.caffeine.ViewUtils;
 
 import com.dragons.aurora.activities.ClusterActivity;
-import com.dragons.aurora.activities.DetailsActivity;
+
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.model.App;
@@ -26,6 +27,7 @@ public class AppLists extends AbstractHelper {
     @Override
     public void draw() {
         for (final String label : app.getRelatedLinks().keySet()) {
+            ToastUtils.quickToast(fragment.getActivity(),label);
             if (label.contains(app.getDeveloperName())) {
                 addAppsByThisDeveloper();
             }

@@ -106,7 +106,7 @@
     <string name="details_size">"%1$s"</string>
     <string name="details_uninstall">Uninstall</string>
     <string name="details_update">Update</string>
-    <string name="details_updated">"Updated : %1$s"</string>
+    <string name="details_updated">"%1$s"</string>
     <string name="details_versionName">"%1$s"</string>
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>
     <string name="details_wishList">Add to wishlist</string>

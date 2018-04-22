@@ -28,7 +28,6 @@ import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
-import com.percolate.caffeine.ViewUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -116,8 +115,9 @@ public class GeneralDetails extends AbstractHelper {
         paintTextView(color, R.id.beta_header);
         paintTextView(color, R.id.permissions_header);
         paintTextView(color, R.id.readMore);
-        paintTextView(color,R.id.exodus_title);
-        paintImageView(color,R.id.privacy_ico);
+        paintTextView(color, R.id.exodus_title);
+        paintTextView(color, R.id.changes_upper);
+        paintImageView(color, R.id.privacy_ico);
     }
 
     private void paintButton(int color, int buttonId) {
@@ -145,9 +145,6 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void drawGeneralDetails(App app) {
-        fragment.getActivity().findViewById(R.id.app_detail).setVisibility(View.VISIBLE);
-        fragment.getActivity().findViewById(R.id.general_card).setVisibility(View.VISIBLE);
-
         if (app.isEarlyAccess()) {
             setText(R.id.rating, R.string.early_access);
         } else {
@@ -158,7 +155,10 @@ public class GeneralDetails extends AbstractHelper {
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(fragment.getActivity(), app.getSize()));
         setText(R.id.category, R.string.details_category, new CategoryManager(fragment.getActivity()).getCategoryName(app.getCategoryId()));
-        setText(R.id.developer, R.string.details_developer, app.getDeveloperName());
+        setText(R.id.app_rating, app.getLabeledRating());
+        setText(R.id.google_dependencies, app.getDependencies().isEmpty()
+                ? R.string.list_app_independent_from_gsf
+                : R.string.list_app_depends_on_gsf);
         if (app.getPrice().isEmpty())
             setText(R.id.price, R.string.category_appFree);
         else
@@ -169,8 +169,8 @@ public class GeneralDetails extends AbstractHelper {
         drawChanges(app);
 
         if (app.getVersionCode() == 0) {
-            fragment.getActivity().findViewById(R.id.updated).setVisibility(View.GONE);
-            fragment.getActivity().findViewById(R.id.size).setVisibility(View.GONE);
+            show(fragment.getView(), R.id.updated);
+            show(fragment.getView(), R.id.size);
         }
 
         appInfo = fragment.getActivity().findViewById(R.id.d_app_info);
@@ -189,6 +189,11 @@ public class GeneralDetails extends AbstractHelper {
             textViewHopper(appExtras, appReviews, appInfo);
             contentViewHopper(R.id.additional_info_layout, R.id.app_info_layout, R.id.reviews_layout);
         });
+
+        show(fragment.getView(), R.id.mainCard);
+        show(fragment.getView(), R.id.app_detail);
+        show(fragment.getView(), R.id.general_card);
+        hide(fragment.getView(), R.id.progress);
     }
 
     private void drawChanges(App app) {
@@ -196,7 +201,7 @@ public class GeneralDetails extends AbstractHelper {
         TextView readMore = fragment.getActivity().findViewById(R.id.readMore);
         LinearLayout changelogLayout = fragment.getActivity().findViewById(R.id.changelog_container);
         if (TextUtils.isEmpty(changes)) {
-            fragment.getActivity().findViewById(R.id.changes_container).setVisibility(View.GONE);
+            hide(fragment.getView(), R.id.changes_container);
             return;
         }
         if (app.getInstalledVersionCode() == 0) {
@@ -204,14 +209,14 @@ public class GeneralDetails extends AbstractHelper {
             setText(R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
             readMore.setOnClickListener(v -> {
                 if (changelogLayout.getVisibility() == View.GONE)
-                    changelogLayout.setVisibility(View.VISIBLE);
+                    show(fragment.getView(), R.id.changelog_container);
                 else
-                    changelogLayout.setVisibility(View.GONE);
+                    hide(fragment.getView(), R.id.changelog_container);
             });
         } else {
             readMore.setVisibility(View.GONE);
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
-            fragment.getActivity().findViewById(R.id.changes_container).setVisibility(View.VISIBLE);
+            show(fragment.getView(), R.id.changes_container);
         }
     }
 
@@ -268,9 +273,9 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawDescription(App app) {
         if (TextUtils.isEmpty(app.getDescription())) {
-            fragment.getActivity().findViewById(R.id.more_card).setVisibility(View.GONE);
+            hide(fragment.getView(), R.id.more_card);
         } else {
-            fragment.getActivity().findViewById(R.id.more_card).setVisibility(View.VISIBLE);
+            show(fragment.getView(), R.id.more_card);
             setText(R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
         }
     }
@@ -283,8 +288,8 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void contentViewHopper(int viewA, int viewB, int viewC) {
-        ViewUtils.findViewById(fragment.getActivity(), viewA).setVisibility(View.VISIBLE);
-        ViewUtils.findViewById(fragment.getActivity(), viewB).setVisibility(View.GONE);
-        ViewUtils.findViewById(fragment.getActivity(), viewC).setVisibility(View.GONE);
+        show(fragment.getView(), viewA);
+        hide(fragment.getView(), viewB);
+        hide(fragment.getView(), viewC);
     }
 }
