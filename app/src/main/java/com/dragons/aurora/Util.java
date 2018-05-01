@@ -3,6 +3,7 @@ package com.dragons.aurora;
 import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.view.View;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -118,5 +119,26 @@ public class Util {
             order += 3;
         }
         return tempValue + diPrefixes.get(order);
+    }
+
+    public static void moveAndAnimate(View v, String direction, long start, long end, long duration) {
+        android.animation.ObjectAnimator mover = android.animation.ObjectAnimator.ofFloat(v, direction, start, end);
+        mover.setDuration(duration);
+        mover.start();
+    }
+    public static void moveAndAnimate(View v, String direction, long start, long end) {
+        android.animation.ObjectAnimator mover = android.animation.ObjectAnimator.ofFloat(v, direction, start, end);
+        mover.setDuration(500);
+        mover.start();
+    }
+    public static void rotate(View v, float from, float to) {
+        android.animation.ObjectAnimator mover = android.animation.ObjectAnimator.ofFloat(v, "rotation", from, to);
+        mover.setDuration(500);
+        mover.start();
+    }
+    public static void rotate(View v, float from, float to, long duration) {
+        android.animation.ObjectAnimator mover = android.animation.ObjectAnimator.ofFloat(v, "rotation", from, to);
+        mover.setDuration(duration);
+        mover.start();
     }
 }

@@ -1,9 +1,12 @@
 package com.dragons.aurora.activities.intro;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,7 +35,7 @@ public class IntroActivity extends AppCompatActivity {
                 pager.setCurrentItem(pager.getCurrentItem() - 1);
                 action_bt.setContentDescription("state0");
             }
-            else {
+            if (action_bt.getContentDescription() != "state1"){
                 pager.setCurrentItem(pager.getCurrentItem() + 1);
                 action_bt.setContentDescription("state1");
             }
@@ -46,6 +49,7 @@ public class IntroActivity extends AppCompatActivity {
         if (isIntroFinished()) {
             startMain();
         }
+
         RelativeLayout head = findViewById(R.id.head_intro_layout);
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -57,21 +61,34 @@ public class IntroActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        Util.moveAndAnimate(action_bt, "translationX", -head.getWidth()+250, 0, 1000);
-                        Util.rotate(action_bt, 180, 0, 600);
-                        action_bt.setContentDescription("state0");
-                        Util.moveAndAnimate(action_bt2, "alpha", 1, 0);
-                        Util.moveAndAnimate(action_bt2, "translationX", head.getWidth()-250, 0, 500);
-                        action_bt2.setClickable(false);
+                        if (action_bt.getContentDescription() == "state1") {
+                            Util.moveAndAnimate(action_bt, "translationX", -head.getWidth() + 250, 0, 1000);
+                            Util.rotate(action_bt, 180, 0, 600);
+                            action_bt.setContentDescription("state0");
+                        }
                         break;
                     case 1:
-                        Util.moveAndAnimate(action_bt, "translationX", 0, -head.getWidth()+250, 1000);
-                        Util.rotate(action_bt, 0, 180, 600);
-                        action_bt.setContentDescription("state1");
-                        action_bt2.setVisibility(View.VISIBLE);
-                        action_bt2.setClickable(true);
-                        Util.moveAndAnimate(action_bt2, "alpha", 0, 1);
-                        Util.moveAndAnimate(action_bt2, "translationX", 0, head.getWidth()-250, 500);
+                        if (action_bt2.getContentDescription() == "state0") {
+                            Util.moveAndAnimate(action_bt2, "alpha", 1, 0);
+                            Util.moveAndAnimate(action_bt2, "translationX", head.getWidth() - 250, 0, 500);
+                            action_bt2.setClickable(false);
+                            action_bt2.setContentDescription("state1");
+                        }
+                        break;
+                    case 2:
+                        if (action_bt.getContentDescription() != "state1") {
+                            Util.moveAndAnimate(action_bt, "translationX", 0, -head.getWidth() + 250, 1000);
+                            Util.rotate(action_bt, 0, 180, 600);
+                            action_bt.setContentDescription("state1");
+                        }
+                        action_bt2.setVisibility(View.GONE);
+                        if (ContextCompat.checkSelfPermission(IntroActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                            action_bt2.setVisibility(View.VISIBLE);
+                            action_bt2.setContentDescription("state0");
+                            action_bt2.setClickable(true);
+                            Util.moveAndAnimate(action_bt2, "alpha", 0, 1);
+                            Util.moveAndAnimate(action_bt2, "translationX", 0, head.getWidth()-250, 500);
+                        }
                         break;
                 }
             }

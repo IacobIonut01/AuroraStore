@@ -297,4 +297,5 @@
     <string name="testing_program_section_opted_out_title">Become a beta tester</string>
     <string name="top_categories">Top categories</string>
     <string name="warn_app_purchase">App purchase is not available yet, redirecting to PlayStore Web</string>
+    <string name="state0">state0</string>
 </resources>
