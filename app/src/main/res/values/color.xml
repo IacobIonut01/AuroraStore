@@ -13,6 +13,7 @@
     <color name="gray">#BDBDBD</color>
     <color name="darkGray">#616161</color>
     <color name="lightGray">#EEEEEE</color>
+    <color name="semitransparent">#84898989</color>
 
     <!--Shades-->
     <color name="colorShade01">@color/colorRed</color>

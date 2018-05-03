@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/head_intro_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/intro_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.dragons.custom.pageindicator.PageIndicatorView
+        android:id="@+id/pageIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/intro_action"
+        android:layout_centerHorizontal="true"
+        app:piv_animationType="slide"
+        app:piv_dynamicCount="true"
+        app:piv_selectedColor="?attr/colorAccent"
+        app:piv_unselectedColor="@android:color/darker_gray"
+        app:piv_viewPager="@id/intro_pager" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/intro_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:clickable="true"
+        android:contentDescription="state0"
+        android:tint="@color/white"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_arrow_forward" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/intro_action2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="32dp"
+        android:clickable="true"
+        android:contentDescription="0"
+        android:tint="@color/white"
+        android:visibility="gone"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_check" />
+
+</RelativeLayout>
