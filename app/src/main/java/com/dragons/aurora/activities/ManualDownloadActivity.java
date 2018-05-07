@@ -27,9 +27,6 @@ public class ManualDownloadActivity extends DetailsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
-        dadtb.getAction_icon().setOnClickListener((v -> this.onBackPressed()));
     }
 
     @Override

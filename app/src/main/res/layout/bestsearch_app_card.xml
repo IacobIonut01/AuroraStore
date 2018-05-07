@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bs_layout"
+    android:layout_width="match_parent"
+    android:layout_height="160dp">
+
+
+    <ImageView
+        android:id="@+id/bs_img"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/bs_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/bs_img"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_toEndOf="@+id/bs_img"
+        android:layout_toStartOf="@+id/textView19"
+        android:fontFamily="@font/google_sans_bold"
+        android:singleLine="true"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/bs_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bs_title"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/bs_img"
+        android:layout_toStartOf="@+id/textView19"
+        android:fontFamily="@font/google_sans_bold"
+        android:singleLine="true"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="12dp"
+        android:text="Featured"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/bs_cointains_ads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="12dp"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/bs_get"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        android:layout_above="@+id/bs_cointains_ads"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/edit_text_login"
+        android:backgroundTint="?android:attr/colorAccent"
+        android:text="Get"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="13sp" />
+
+</RelativeLayout>

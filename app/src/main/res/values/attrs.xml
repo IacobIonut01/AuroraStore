@@ -41,6 +41,7 @@
         <attr name="ToolbarStyle" format="enum" >
             <enum name="Home" value="0" />
             <enum name="Details" value="1" />
+            <enum name="Search" value="2" />
         </attr>
     </declare-styleable>
 </resources>

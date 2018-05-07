@@ -98,7 +98,7 @@ public class AuroraSuggestionProvider extends ContentProvider {
 
     private Object[] constructAppRow(SearchSuggestEntry entry, int id) {
         File file = new BitmapManager(getContext()).downloadAndGetFile(entry.getImageContainer().getImageUrl());
-        return new Object[]{id, entry.getTitle(), entry.getPackageNameContainer().getPackageName(), null != file ? Uri.fromFile(file) : R.drawable.ic_placeholder};
+        return new Object[]{id, entry.getTitle(), entry.getPackageNameContainer().getPackageName(), null != file ? Uri.fromFile(file) : android.R.color.transparent};
     }
 
     private Object[] constructSuggestionRow(SearchSuggestEntry entry, int id) {

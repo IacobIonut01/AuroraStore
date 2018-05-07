@@ -7,54 +7,65 @@
         android:id="@+id/d_adtb2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ToolbarStyle="Details" />
+        app:ToolbarStyle="Search" >
 
-    <android.support.v7.widget.CardView
+        <include
+            layout="@layout/bestsearch_app_card"
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
+    </com.dragons.aurora.view.AdaptiveToolbar>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="2dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            app:cardCornerRadius="2dp"
+            app:cardElevation="2dp">
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/category_tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?android:attr/colorBackground"
-                android:elevation="1dp"
-                app:tabMode="fixed"
-                app:tabSelectedTextColor="@color/colorAccent" />
-
-            <ListView
-                android:id="@android:id/list"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:animationCache="true"
-                android:drawingCacheQuality="auto"
-                android:scrollingCache="true" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:visibility="gone" />
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/category_tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/colorBackground"
+                    android:elevation="1dp"
+                    app:tabMode="fixed"
+                    app:tabSelectedTextColor="@color/colorAccent" />
 
-        <TextView
-            android:id="@android:id/empty"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+                <ListView
+                    android:id="@android:id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:animationCache="true"
+                    android:drawingCacheQuality="auto"
+                    android:scrollingCache="true" />
+            </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@android:id/empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
