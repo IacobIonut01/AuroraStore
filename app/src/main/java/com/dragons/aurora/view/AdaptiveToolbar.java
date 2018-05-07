@@ -6,15 +6,10 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.database.Cursor;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.support.annotation.ColorInt;
 import android.support.design.widget.AppBarLayout;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,10 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.RecyclerItemTouchHelper;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.SearchActivity;
-import com.dragons.aurora.adapters.SearchHistoryAdapter;
 import com.dragons.aurora.fragment.UpdatableAppsFragment;
 
 import java.text.SimpleDateFormat;

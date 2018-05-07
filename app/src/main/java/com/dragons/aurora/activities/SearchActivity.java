@@ -64,6 +64,10 @@ public class SearchActivity extends EndlessScrollActivity {
         bs_get.setOnClickListener(onClickListener);
     }
 
+    public static RelativeLayout getBs_layout() {
+        return bs_layout;
+    }
+
     public static void containsAds(boolean bol) {
        if (bol)
            bs_ads.setText(R.string.details_contains_ads);
@@ -105,7 +109,7 @@ public class SearchActivity extends EndlessScrollActivity {
             clearApps();
             appsTask(newQuery, dadtb);
         }
-        dadtb.addQueryTextListener(this, dadtb.getSearchView());
+        dadtb.addQueryTextListener(SearchActivity.this, dadtb.getSearchView());
         dadtb.getSearchView().setOnSuggestionListener(new SearchView.OnSuggestionListener() {
             @Override
             public boolean onSuggestionSelect(int position) {
@@ -130,18 +134,12 @@ public class SearchActivity extends EndlessScrollActivity {
         dadtb.setSQuery(newQuery);
         dadtb.getSearch_item().setText(getTitleString());
         if (looksLikeAPackageId(query)) {
-            Log.i(getClass().getSimpleName(), query + " looks like a package id");
-            try {
-                sleep(700);
-                checkPackageId(query);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            checkPackageId(query);
             loadApps(subCategory);
-            bs_layout.setVisibility(View.VISIBLE);
+            getBs_layout().setVisibility(View.VISIBLE);
         } else {
             loadApps(subCategory);
-            bs_layout.setVisibility(View.GONE);
+            getBs_layout().setVisibility(View.GONE);
         }
     }
 
