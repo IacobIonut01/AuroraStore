@@ -21,13 +21,13 @@ import com.dragons.aurora.model.Filter;
 
 public class FilterMenu {
 
-    static private final String FILTER_SYSTEM_APPS = "FILTER_SYSTEM_APPS";
-    static private final String FILTER_APPS_WITH_ADS = "FILTER_APPS_WITH_ADS";
-    static private final String FILTER_PAID_APPS = "FILTER_PAID_APPS";
-    static private final String FILTER_GSF_DEPENDENT_APPS = "FILTER_GSF_DEPENDENT_APPS";
-    static private final String FILTER_CATEGORY = "FILTER_CATEGORY";
-    static private final String FILTER_RATING = "FILTER_RATING";
-    static private final String FILTER_DOWNLOADS = "FILTER_DOWNLOADS";
+    static public final String FILTER_SYSTEM_APPS = "FILTER_SYSTEM_APPS";
+    static public final String FILTER_APPS_WITH_ADS = "FILTER_APPS_WITH_ADS";
+    static public final String FILTER_PAID_APPS = "FILTER_PAID_APPS";
+    static public final String FILTER_GSF_DEPENDENT_APPS = "FILTER_GSF_DEPENDENT_APPS";
+    static public final String FILTER_CATEGORY = "FILTER_CATEGORY";
+    static public final String FILTER_RATING = "FILTER_RATING";
+    static public final String FILTER_DOWNLOADS = "FILTER_DOWNLOADS";
 
     static private final Map<Float, String> ratingLabels = new HashMap<>();
     static private final Map<Integer, String> downloadsLabels = new HashMap<>();
